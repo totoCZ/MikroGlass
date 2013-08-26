@@ -1,0 +1,48 @@
+.dropdown-menu>li>a:hover,.dropdown-menu>li>a:focus,.dropdown-submenu:hover>a,.dropdown-submenu:focus>a {
+    background-image: none;
+    background-color: #d43f3a;
+}
+
+.footer {
+    border-top: 1px solid #e5e5e5;
+    color: #777;
+    padding-top: 19px;
+}
+
+.jumbotron h1,h2 {
+    color: #d43f3a;
+}
+
+.jumbotron h1 {
+    font-family: "Josefin Sans";
+}
+
+.mfm {
+    height: 10%;
+    width: 10%;
+}
+
+.navbar-nav > .active > a,.navbar-nav > .active > a:hover {
+    background-color: #d43f3a;
+    color: #eee;
+}
+
+.ug-navbar {
+    background-color: #d43f3a;
+    border-bottom: 3px solid #eee;
+    color: #FFF;
+}
+
+.ug-navbar a,.ug-navbar li a {
+    border-top: 3px solid #d43f3a;
+    color: #FFF;
+}
+
+.ug-navbar a:hover,.ug-navbar li a:hover,.ug-navbar li.active a {
+    border-top: 3px solid #eee;
+    color: #eee;
+}
+
+body {
+    font-family: "Droid Sans";
+}
