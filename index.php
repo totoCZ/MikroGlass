@@ -5,6 +5,8 @@ $c = parse_ini_file("config.ini");
 <html>
 <head>
 	<title>MikroGlass Looking Glass for Mikrotik routers</title>
+	<meta charset="utf-8"> 
+	<meta name="author" content="tom.hetmer.net 2013">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="//fonts.googleapis.com/css?family=Josefin+Sans|Droid+Sans&amp;subset=latin" rel="stylesheet">
 	<link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0-rc2/css/bootstrap.min.css" rel="stylesheet" media="screen">
@@ -109,7 +111,9 @@ $c = parse_ini_file("config.ini");
 
 		<footer>
 			<p>
-				Powered by <a href='//github.com/TomHetmer/MikroGlass'>MikroGlass</a>.
+				<!-- you are not allowed to remove original author attribution (Affero GPL 3+) -->
+				<!-- you can integrate this line into your design however you want -->
+				Powered by <a href='//github.com/TomHetmer/MikroGlass'>MikroGlass</a>, &copy; Tomáš Hetmer.
 			</p>
 			<p>
 				<a href='//ug.runtimeapp.com'>
