@@ -3,18 +3,19 @@
     background-color: #d43f3a;
 }
 
-.footer {
+footer {
     border-top: 1px solid #e5e5e5;
     color: #777;
     padding-top: 19px;
 }
 
-.jumbotron h1,h2 {
+.jumbotron h1 {
     color: #d43f3a;
+    font-family: "Josefin Sans";
 }
 
 .jumbotron h1 {
-    font-family: "Josefin Sans";
+	font-size: 50px;
 }
 
 .mfm {
@@ -45,4 +46,5 @@
 
 body {
     font-family: "Droid Sans";
+    background: url('vendor/light_noise_diagonal.png');
 }
