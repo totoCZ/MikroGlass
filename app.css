@@ -1,4 +1,4 @@
-.dropdown-menu>li>a:hover,.dropdown-menu>li>a:focus,.dropdown-submenu:hover>a,.dropdown-submenu:focus>a {
+.dropdown-menu>li>a:hover,.dropdown-menu>li>a:focus,.dropdown-submenu:hover>a,.dropdown-submenu:focus>a, .navbar ul li a:hover {
     background-image: none;
     background-color: #d43f3a;
 }

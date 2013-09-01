@@ -9,7 +9,7 @@ $c = parse_ini_file("config.ini");
 	<meta name="author" content="tom.hetmer.net 2013">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="//fonts.googleapis.com/css?family=Josefin+Sans|Droid+Sans&amp;subset=latin" rel="stylesheet">
-	<link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0-rc2/css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
 	<link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
 	<link href="./app.css" rel="stylesheet" media="screen">
 	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
@@ -127,7 +127,7 @@ $c = parse_ini_file("config.ini");
 	</div>
 
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0-rc2/js/bootstrap.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0/js/bootstrap.min.js"></script>
 	<script src="./app.js"></script>
 	
 </body>
