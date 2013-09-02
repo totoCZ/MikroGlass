@@ -3,7 +3,7 @@ MikroGlass
 
 Looking glass system for Mikrotik routers.
 
-[Online demo](http://ug.runtimeapp.com)
+[Online demo](http://ug.hetmer.net)
 
 Features
 --
