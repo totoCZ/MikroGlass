@@ -115,12 +115,10 @@ $c = parse_ini_file("config.ini");
 			<p>
 				<!-- you are not allowed to remove original author attribution (Affero GPL 3+) -->
 				<!-- you can integrate this line into your design however you want -->
-				Powered by <a href='//github.com/TomHetmer/MikroGlass'>MikroGlass</a>, &copy; Tomáš Hetmer.
+				Powered by <a href='//github.com/TomHetmer/MikroGlass'>MikroGlass</a>, &copy; <a href='//hetmer.net'>Tomáš Hetmer</a>.
 			</p>
 			<p>
-				<a href='//ug.runtimeapp.com'>
-					<img src="./vendor/made_mfm.png" class="mfm pull-right" alt="Mikrotik logo">
-				</a>
+				<img src="./vendor/made_mfm.png" class="mfm pull-right" alt="Mikrotik logo">
 			</p>
 		</footer>
 
