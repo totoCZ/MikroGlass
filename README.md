@@ -3,8 +3,6 @@ MikroGlass
 
 Looking glass system for Mikrotik routers.
 
-[Online demo](http://ug.hetmer.net)
-
 Features
 --
 * Ping
