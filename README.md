@@ -14,3 +14,7 @@ Features
 Users
 --
 * [inAsset Networks](https://inasset.es/lg/)
+
+Screenshot
+--
+![Index](http://tom.hetmer.net/images/projects/mikroglass/index.png)
