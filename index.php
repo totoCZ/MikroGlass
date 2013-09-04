@@ -28,7 +28,6 @@ $c = parse_ini_file("config.ini");
 				</button>
 				<a href="./" class="navbar-brand">
 					µ<i class="icon-glass"></i>
-					<?php echo $c['version'] ?>
 				</a>
 			</div>
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
