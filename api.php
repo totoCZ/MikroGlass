@@ -22,78 +22,81 @@ header('Content-Type: application/json');
 function fail($why) {
 	echo json_encode(array(
 		'error' => $why
-		));
+	));
 	exit();
 }
-
-if (!is_readable("config.ini"))
-	fail("Nothing to do, my friend.");
 
 $config		= parse_ini_file("config.ini");
 $user 		= $config['user'];
 $password	= $config['password'];
 
 $tools = array(
-	'ping'			=> '/ping count=4',
-	'trace'			=> '/tool traceroute duration=3 use-dns=yes',
-	'route'			=> '/ip route print',
+	'ping'		=> '/ping count=4',
+	'trace'		=> '/tool traceroute duration=3 use-dns=yes',
 	'exactroute'	=> '/ip r pr de where dst-address=',
-	'peers'			=> '/routing bgp peer print',
-	'status'		=> '/routing bgp peer print status'
-	);
+	'route'		=> '/ip route print',
+	'peers'		=> '/routing bgp peer print',
+	'status'	=> '/routing bgp peer print status'
+);
 
-$type 		= $_POST['type'];
-$argument 	= $_POST['command'];
-$server 	= $config['fqdn'][$_POST['id']];
-$tool 		= $tools[$type];
+$type 		= $_POST['type'];		// type of command (ping, trace, ..)
+$tool 		= $tools[$type];		// command syntax
+$argument	= $_POST['command'];		// user's argument
+$server		= $config['fqdn'][$_POST['id']]; // resolve FQDN host
+$exec 		= $tool;			// simple commands execute immediately
 
-if ($tool == "" || $server == "") {
-	fail('wrong parameters');
+if (!$tool || !$server) {
+	// Does not match our tool or server arrays.
+	fail('Wrong parameters.');
 }
 
-error_log($type . ' ' . $tool . ' ' . $argument);
-$exec = $tool;
-
 if ($type == 'ping' || $type == 'trace' || $type == 'exactroute') {
-	if ($argument == "") {
-		fail('empty parameter');
+	// We need argument for these tools
+	if (empty($argument)) {
+		fail('Empty parameter.');
 	}
 
+	// BGP route can't have space
 	if ($type == 'exactroute') {
 		$space = '';
-	}
-	else {
+	} else {
 		$space = ' ';
 	}
 
+	// Need to sanitize hostname
 	if ($type == 'ping' || $type == 'trace') {
+		// Always returns safely with IP, even for IPs
 		$host = gethostbynamel($argument);
 		if($host) {
 			$argument = $host[0];
 		} else {
-			fail('bad ip');
+			fail('Wrong hostname.');
 		}
 	}
 
 	$exec = $tool . $space . escapeshellcmd($argument);	
 }
 
-if (strtoupper(substr(PHP_OS, 0, 3)) !== 'WIN' && $config['password'] == '') {
-	// linux no password
+// Can't really ssh with passwords
+// Key auth might help - what about mikrotik sshd?
+if (strtoupper(substr(PHP_OS, 0, 3)) !== 'WIN' && empty($config['password'])) {
+	// Linux, no password, let's ssh
 	$fp = popen('ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no ' . $user . '@' . $server . ' ' . $exec, 'r');
 } else {
-	// putty link
+	// Putty Link fallback (Linux, Windows)
 	$fp = popen($config['path'] . ' -ssh -l ' .  $user . ' -pw ' . $password . ' ' . $server . ' ' . $exec, 'r');
 }
 
+// Handle stream
 $out = null;
 while (!feof($fp)) {
 	$out .= fgets($fp);
 }
 fclose($fp);
 
+// Return result and our command for display
 echo json_encode(array(
 	'command'	=> $exec,
 	'result'	=> $out
-	));	
+));
 ?>
