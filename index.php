@@ -95,9 +95,12 @@ $c = parse_ini_file("config.ini");
 			</div>
 			<span class="help-block">
 				Quickcheck:
-				<a href="javascript:quick('route')">IP Routes</a>
-				<a href="javascript:quick('peers')">BGP Peers</a>
-				<a href="javascript:quick('status')">BGP Status</a>
+				<a href="javascript:quick('route-info')">IP Routes</a>
+				<a href="javascript:quick('bgp-peer')">BGP Peers</a>
+				<a href="javascript:quick('bgp-status')">BGP Status</a>
+				<a href="javascript:quick('ospf-neighbor')">OSPF Neighbor</a>
+				<a href="javascript:quick('v4-neighbor')">v4 Neighbor</a>
+				<a href="javascript:quick('v6-neighbor')">v6 Neighbor</a>
 			</span>
 		</form>
 

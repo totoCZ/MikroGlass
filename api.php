@@ -31,19 +31,22 @@ $user 		= $config['user'];
 $password	= $config['password'];
 
 $tools = array(
-	'ping'		=> '/ping count=4',
-	'trace'		=> '/tool traceroute duration=3 use-dns=yes',
-	'exactroute'	=> '/ip r pr de where dst-address=',
-	'route'		=> '/ip route print',
-	'peers'		=> '/routing bgp peer print',
-	'status'	=> '/routing bgp peer print status'
+	'ping'          => '/ping count=4',
+	'trace'         => '/tool traceroute duration=3 use-dns=yes',
+	'exactroute'    => '/ip r pr de where dst-address=',
+	'route-info'    => '/ip route print',
+	'bgp-peer'      => '/routing bgp peer print',
+	'bgp-status'    => '/routing bgp peer print status',
+	'ospf-neighbor' => '/routing ospf neigh print',
+	'v4-neighbor'   => '/ip neigh pr de',
+	'v6-neighbor'   => '/ipv6 neigh pr',
 );
 
-$type 		= $_POST['type'];		// type of command (ping, trace, ..)
-$tool 		= $tools[$type];		// command syntax
-$argument	= $_POST['command'];		// user's argument
-$server		= $config['fqdn'][$_POST['id']]; // resolve FQDN host
-$exec 		= $tool;			// simple commands execute immediately
+$type       = $_POST['type'];				// type of command (ping, trace, ..)
+$tool       = $tools[$type];				// command syntax
+$argument   = $_POST['command'];			// user's argument
+$server     = $config['fqdn'][$_POST['id']];// resolve FQDN host
+$exec       = $tool;						// simple commands execute immediately
 
 if (!$tool || !$server) {
 	// Does not match our tool or server arrays.
@@ -78,9 +81,9 @@ if ($type == 'ping' || $type == 'trace' || $type == 'exactroute') {
 }
 
 // Can't really ssh with passwords
-// Key auth might help - what about mikrotik sshd?
+// Key auth works.
 if (strtoupper(substr(PHP_OS, 0, 3)) !== 'WIN' && empty($config['password'])) {
-	// Linux, no password, let's ssh
+	// Linux, no password/keys, let's ssh
 	$fp = popen('ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no ' . $user . '@' . $server . ' ' . $exec, 'r');
 } else {
 	// Putty Link fallback (Linux, Windows)
