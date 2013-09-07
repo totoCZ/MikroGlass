@@ -93,17 +93,17 @@ $c = parse_ini_file("config.ini");
 				</div>
 				<input class="form-control input-lg" id="fqdn" type="text" onclick="$(this).val('')" placeholder="hetmer.net" autofocus="autofocus" required="required">
 			</div>
-			<span class="help-block">
+			<p class="help-block">
 				Quickcheck:
 				<a href="javascript:quick('route-info')">IP Routes</a>
 				<a href="javascript:quick('bgp-peer')">BGP Peers</a>
 				<a href="javascript:quick('bgp-status')">BGP Status</a>
-			<span class="help-block">
+			<br>
 				Neighbors:
 				<a href="javascript:quick('ospf-neighbor')">OSPF</a>
 				<a href="javascript:quick('v4-neighbor')">IPv4</a>
 				<a href="javascript:quick('v6-neighbor')">IPv6</a>
-			</span>
+			</p>
 		</form>
 
 		<div class="page-header">
