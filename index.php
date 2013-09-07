@@ -98,9 +98,11 @@ $c = parse_ini_file("config.ini");
 				<a href="javascript:quick('route-info')">IP Routes</a>
 				<a href="javascript:quick('bgp-peer')">BGP Peers</a>
 				<a href="javascript:quick('bgp-status')">BGP Status</a>
-				<a href="javascript:quick('ospf-neighbor')">OSPF Neighbor</a>
-				<a href="javascript:quick('v4-neighbor')">v4 Neighbor</a>
-				<a href="javascript:quick('v6-neighbor')">v6 Neighbor</a>
+			<span class="help-block">
+				Neighbors:
+				<a href="javascript:quick('ospf-neighbor')">OSPF</a>
+				<a href="javascript:quick('v4-neighbor')">IPv4</a>
+				<a href="javascript:quick('v6-neighbor')">IPv6</a>
 			</span>
 		</form>
 
