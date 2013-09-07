@@ -92,7 +92,7 @@ $out = null;
 while (!feof($fp)) {
 	$out .= fgets($fp);
 }
-fclose($fp);
+pclose($fp);
 
 // Return result and our command for display
 echo json_encode(array(
