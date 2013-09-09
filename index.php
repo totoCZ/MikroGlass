@@ -1,6 +1,4 @@
-﻿<?php
-$c = parse_ini_file("config.ini.php");
-?>
+<?php $c = parse_ini_file("config.ini.php"); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +18,7 @@ $c = parse_ini_file("config.ini.php");
 	<nav class="navbar ug-navbar navbar-fixed-top" role="navigation">
 		<div class="container">
 			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+				<button type="button" class="navbar-toggle navbar-default" data-toggle="collapse" data-target=".navbar-ex1-collapse">
 					<span class="sr-only">Toggle navigation</span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
@@ -77,7 +75,7 @@ $c = parse_ini_file("config.ini.php");
 		</div>
 
 		<form id="form">
-			<div class="input-group col col-lg-12">
+			<div class="input-group">
 				<div class="input-group-btn">
 					<button id="button" class="btn btn-lg btn-danger" tabindex="-1">
 						<span id="btnText">Ping</span>
