@@ -1,5 +1,5 @@
 ﻿<?php
-$c = parse_ini_file("config.ini");
+$c = parse_ini_file("config.ini.php");
 ?>
 <!DOCTYPE html>
 <html>

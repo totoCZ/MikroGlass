@@ -26,7 +26,7 @@ function fail($why) {
 	exit();
 }
 
-$config		= parse_ini_file("config.ini");
+$config		= parse_ini_file("config.ini.php");
 $user 		= $config['user'];
 $password	= $config['password'];
 

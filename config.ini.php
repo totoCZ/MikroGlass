@@ -1,12 +1,11 @@
-; SECURITY WARNING
-; for nginx
-; http://nixcraft.com/web-servers/17537-nginx-block-files-extensions-deny-all.html
+; <?php exit(); __halt_compiler();
 
-[ssh]
-; linux
-;  path=./plink
-; windows
-;  path=plink.exe
+[plink]
+; putty link only
+; do not set for ssh
+
+; path=./plink   ; linux
+; path=plink.exe ; windows
 
 [branding]
 name="MikroGlass"
