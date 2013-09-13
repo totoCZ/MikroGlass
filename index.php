@@ -115,9 +115,7 @@
 
 		<footer>
 			<p>
-				<!-- you are not allowed to remove original author attribution (Affero GPL 3+) -->
-				<!-- you can integrate this line into your design however you want -->
-				Powered by <a href='//github.com/TomHetmer/MikroGlass'>MikroGlass</a>, &copy; <a href='//hetmer.net'>Tomáš Hetmer</a>.
+				Powered by <a href='//github.com/TomHetmer/MikroGlass'>MikroGlass</a>.
 			</p>
 		</footer>
 

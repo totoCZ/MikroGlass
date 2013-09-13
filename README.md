@@ -14,6 +14,12 @@ Features
 Users
 --
 * [inAsset Networks](https://inasset.es/lg/)
+* [BigAir Community Broadband](https://lg.bacb.com.au/)
+
+Credits
+--
+* [Tom Hetmer](https://github.com/TomHetmer)
+* [Andrew Cox](https://github.com/andrewcoxbigair)
 
 Screenshot
 --
