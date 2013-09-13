@@ -27,7 +27,7 @@ function switchAction(action) {
         $('#btnText').html('BGP Route');
         $('#fqdn').attr('placeholder', 'Enter exact route, i.e. 83.208.0.0/16');
     } else {
-    	$('#fqdn').attr('placeholder', 'hetmer.net');
+    	$('#fqdn').attr('placeholder', 'ip address or domain name');
     }
 
 	if (currentAction == 'ping') {
