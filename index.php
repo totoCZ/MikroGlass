@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>MikroGlass Looking Glass for Mikrotik routers</title>
+	<title><?php echo $c['title'] ?></title>
 	<meta charset="utf-8"> 
 	<meta name="author" content="tom.hetmer.net 2013">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,6 +16,7 @@
 
 <body>
 	<nav class="navbar ug-navbar navbar-fixed-top" role="navigation">
+		<img src="./vendor/made_mfm.png" class="mfm" alt="Mikrotik logo">
 		<div class="container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle navbar-default" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -70,7 +71,7 @@
 		<div class="page-header">
 			<h2>
 				Step 1
-				<small class="warhead">Select your weapon.</small>
+				<small class="warhead">Select required probe</small>
 			</h2>
 		</div>
 
@@ -89,19 +90,18 @@
 						<li><a href="javascript:switchAction('exactroute')">BGP Route</a></li>
 					</ul>
 				</div>
-				<input class="form-control input-lg" id="fqdn" type="text" onclick="$(this).val('')" placeholder="hetmer.net" autofocus="autofocus" required="required">
+				<input class="form-control input-lg" id="fqdn" type="text" onclick="$(this).val('')" placeholder="ip address or domain name" autofocus="autofocus" required="required">
 			</div>
-			<p class="help-block">
-				Quickcheck:
-				<a href="javascript:quick('route-info')">IP Routes</a>
-				<a href="javascript:quick('bgp-peer')">BGP Peers</a>
-				<a href="javascript:quick('bgp-status')">BGP Status</a>
-			<br>
-				Neighbors:
-				<a href="javascript:quick('ospf-neighbor')">OSPF</a>
-				<a href="javascript:quick('v4-neighbor')">IPv4</a>
-				<a href="javascript:quick('v6-neighbor')">IPv6</a>
-			</p>
+            <p class="help-block">
+                Quickcheck:
+                <a href="javascript:quick('ipv4-route-info')">IPv4 Routes</a>|
+                <a href="javascript:quick('ipv6-route-info')">IPv6 Routes</a>|
+                <a href="javascript:quick('bgp-peer')">BGP Peers</a>|
+                Neighbors:
+                <a href="javascript:quick('ospf-neighbor')">OSPF</a>|
+                <a href="javascript:quick('v4-neighbor')">IPv4</a>|
+                <a href="javascript:quick('v6-neighbor')">IPv6</a>
+            </p>
 		</form>
 
 		<div class="page-header">
@@ -118,9 +118,6 @@
 				<!-- you are not allowed to remove original author attribution (Affero GPL 3+) -->
 				<!-- you can integrate this line into your design however you want -->
 				Powered by <a href='//github.com/TomHetmer/MikroGlass'>MikroGlass</a>, &copy; <a href='//hetmer.net'>Tomáš Hetmer</a>.
-			</p>
-			<p>
-				<img src="./vendor/made_mfm.png" class="mfm pull-right" alt="Mikrotik logo">
 			</p>
 		</footer>
 
