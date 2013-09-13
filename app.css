@@ -19,9 +19,17 @@ footer {
 }
 
 .mfm {
-    height: 10%;
-    width: 10%;
+    height: 50px;
+    position: absolute;
+    top: 2px;
+    right: 40px;
+    border: 0;
 }
+
+@media (min-width: 768px) { 
+    .mfm { right: 2px; } 
+}
+
 
 .navbar-nav > .active > a,.navbar-nav > .active > a:hover {
     background-color: #d43f3a;

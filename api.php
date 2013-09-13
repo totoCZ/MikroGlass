@@ -34,9 +34,11 @@ $tools = array(
 	'ping'          => '/ping count=4',
 	'trace'         => '/tool traceroute duration=3 use-dns=yes',
 	'exactroute'    => '/ip r pr de where dst-address=',
-	'route-info'    => '/ip route print',
+	'ipv4-route-info'    => '/ip route print',
+	'ipv6-route-info'    => '/ipv6 route print',
 	'bgp-peer'      => '/routing bgp peer print',
-	'bgp-status'    => '/routing bgp peer print status',
+	//Commented out by default to disallow any chance for users to see BGP peer password details etc
+	//'bgp-status'    => '/routing bgp peer print status',
 	'ospf-neighbor' => '/routing ospf neigh print',
 	'v4-neighbor'   => '/ip neigh pr de',
 	'v6-neighbor'   => '/ipv6 neigh pr',

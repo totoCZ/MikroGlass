@@ -22,6 +22,6 @@ user=admin
 password=
 
 [servers]
-fqdn[0]=78.156.159.65
-fqdn[1]=demo.mt.lv
-fqdn[2]=demo2.mt.lv
+fqdn[0]=eth1.ipv6core1.nsw.bigair.net.au
+fqdn[1]=125.253.108.85
+fqdn[2]=125.253.99.60
