@@ -1,2 +1,2 @@
-[Wiki page](http://toto.hetmer.net/software/mikroglass)
+[Wiki page](https://github.com/TomHetmer/MikroGlass/wiki)
 ===
