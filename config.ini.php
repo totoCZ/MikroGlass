@@ -11,7 +11,7 @@ title="MikroGlass Looking Glass DEMO"
 name="MikroGlass"
 companyUrl="//github.com/TomHetmer/MikroGlass/"
 logo="//placehold.it/150x50&text=Demo+server"
-customText="<h3><a href='//github.com/TomHetmer/MikroGlass/releases'>Download</a> Something to say? tom@runtimeapp.com (tell us about your install!)</h3>"
+customText="<h3><a href='//github.com/TomHetmer/MikroGlass/releases'>Download</a></h3>"
 
 [login]
 user=admin
