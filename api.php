@@ -1,7 +1,6 @@
 <?php
 /*
 MikroGlass - Mikrotik looking glass. For the web.
-Copyright (C) 2013 Tom Hetmer (http://tom.hetmer.cz)
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as
