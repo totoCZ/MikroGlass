@@ -4,7 +4,7 @@
 <head>
 	<title><?php echo $c['title'] ?></title>
 	<meta charset="utf-8"> 
-	<meta name="author" content="tom.hetmer.net 2013">
+	<meta name="author" content="github.com/tomhetmer 2013">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="//fonts.googleapis.com/css?family=Josefin+Sans|Droid+Sans&amp;subset=latin" rel="stylesheet">
 	<link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" media="screen">
