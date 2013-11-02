@@ -31,7 +31,7 @@ $password	= $config['password'];
 
 $tools = array(
 	'ping'          => '/ping count=4',
-	'trace'         => '/tool traceroute duration=3 use-dns=yes',
+	'trace'         => '/tool traceroute count=1 use-dns=yes',
 	'exactroute'    => '/ip r pr de where dst-address=',
 	'ipv4-route-info'    => '/ip route print',
 	'ipv6-route-info'    => '/ipv6 route print',
