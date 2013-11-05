@@ -33,6 +33,7 @@ $tools = array(
 	'ping'          => '/ping count=4',
 	'trace'         => '/tool traceroute count=1 use-dns=yes',
 	'exactroute'    => '/ip r pr de where dst-address=',
+	'route' 				=> ['/ip r pr de where bgp ', ' in dst-address'],
 	'ipv4-route-info'    => '/ip route print',
 	'ipv6-route-info'    => '/ipv6 route print',
 	'bgp-peer'      => '/routing bgp peer print',
@@ -54,7 +55,7 @@ if (!$tool || !$server) {
 	fail('Wrong parameters.');
 }
 
-if ($type == 'ping' || $type == 'trace' || $type == 'exactroute') {
+if ($type == 'ping' || $type == 'trace' || $type == 'exactroute' || $type == 'route') {
 	// We need argument for these tools
 	if (empty($argument)) {
 		fail('Empty parameter.');
@@ -78,7 +79,12 @@ if ($type == 'ping' || $type == 'trace' || $type == 'exactroute') {
 		}
 	}
 
-	$exec = $tool . $space . escapeshellcmd($argument);	
+	// Generic BGP route lookup
+	if ($type == 'route') {
+		$exec = $tool[0] . escapeshellcmd($argument) . $tool[1];
+	}else{
+		$exec = $tool . $space . escapeshellcmd($argument);
+	}
 }
 
 // Can't really ssh with passwords
