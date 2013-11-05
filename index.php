@@ -87,7 +87,6 @@
 					<ul class="dropdown-menu">
 						<li><a href="javascript:switchAction('ping')">Ping</a></li>
 						<li><a href="javascript:switchAction('trace')">Traceroute</a></li>
-						<li><a href="javascript:switchAction('exactroute')">BGP Exact Route</a></li>
 						<li><a href="javascript:switchAction('route')">BGP Route</a></li>
 					</ul>
 				</div>
