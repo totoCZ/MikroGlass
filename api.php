@@ -33,7 +33,7 @@ $tools = array(
 	'ping'          => '/ping count=4',
 	'trace'         => '/tool traceroute count=1 use-dns=yes',
 	'exactroute'    => '/ip r pr de where dst-address=',
-	'route' 				=> ['/ip r pr de where bgp ', ' in dst-address'],
+	'route' 				=> '/ip r pr de where bgp %s in dst-address',
 	'ipv4-route-info'    => '/ip route print',
 	'ipv6-route-info'    => '/ipv6 route print',
 	'bgp-peer'      => '/routing bgp peer print',
@@ -81,7 +81,7 @@ if ($type == 'ping' || $type == 'trace' || $type == 'exactroute' || $type == 'ro
 
 	// Generic BGP route lookup
 	if ($type == 'route') {
-		$exec = $tool[0] . escapeshellcmd($argument) . $tool[1];
+		$exec = sprintf($tool, escapeshellcmd($argument));
 	}else{
 		$exec = $tool . $space . escapeshellcmd($argument);
 	}
