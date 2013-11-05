@@ -87,7 +87,7 @@
 					<ul class="dropdown-menu">
 						<li><a href="javascript:switchAction('ping')">Ping</a></li>
 						<li><a href="javascript:switchAction('trace')">Traceroute</a></li>
-						<li><a href="javascript:switchAction('exactroute')">BGP Route</a></li>
+						<li><a href="javascript:switchAction('route')">BGP Route</a></li>
 					</ul>
 				</div>
 				<input class="form-control input-lg" id="fqdn" type="text" onclick="$(this).val('')" placeholder="ip address or domain name" autofocus="autofocus" required="required">

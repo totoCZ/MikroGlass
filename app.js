@@ -16,16 +16,16 @@ function switchAction(action) {
 	prevAction = currentAction;
 	currentAction = action;
 
-    if (currentAction == 'exactroute' && prevAction != 'exactroute') {
+    if (currentAction == 'route' && prevAction != 'route') {
     	$('#form #fqdn').val('');
     }
-    if (currentAction != 'exactroute' && prevAction == 'exactroute') {
+    if (currentAction != 'route' && prevAction == 'route') {
     	$('#form #fqdn').val('');
     }
 
-    if (currentAction == 'exactroute') {
-        $('#btnText').html('BGP Route');
-        $('#fqdn').attr('placeholder', 'Enter exact route, i.e. 83.208.0.0/16');
+    if (currentAction == 'route') {
+      $('#btnText').html('BGP Route');
+      $('#fqdn').attr('placeholder', 'ip address');
     } else {
     	$('#fqdn').attr('placeholder', 'ip address or domain name');
     }
