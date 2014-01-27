@@ -31,11 +31,18 @@ function switchAction(action) {
     }
 
 	if (currentAction == 'ping') {
-		$('#btnText').html('Ping');
+		$('#btnText').html('Ping IPV4');
 	}
 
 	if (currentAction == 'trace') {
-		$('#btnText').html('Traceroute');
+		$('#btnText').html('Traceroute  IPV4');
+	}
+		if (currentAction == 'ping6') {
+		$('#btnText').html('Ping IPV6');
+	}
+
+	if (currentAction == 'trace6') {
+		$('#btnText').html('Traceroute  IPV6');
 	}
 
 	if($('#form #fqdn').val() != "") {

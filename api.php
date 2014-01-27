@@ -31,7 +31,9 @@ $password	= $config['password'];
 
 $tools = array(
 	'ping'          => '/ping count=4',
-	'trace'         => '/tool traceroute count=1 use-dns=yes',
+	'trace'         => '/tool traceroute use-dns=yes',
+	'ping6'          => '/ping count=5',
+	'trace6'         => '/tool traceroute use-dns=yes',
 	'route'         => '/ip r pr de where bgp %s in dst-address',
 	'ipv4-route-info'    => '/ip route print',
 	'ipv6-route-info'    => '/ipv6 route print',
@@ -54,18 +56,29 @@ if (!$tool || !$server) {
 	fail('Wrong parameters.');
 }
 
-if ($type == 'ping' || $type == 'trace' || $type == 'route') {
+if ($type == 'ping' || $type == 'trace' || $type == 'ping6' || $type == 'trace6' || $type == 'route') {
 	// We need argument for these tools
 	if (empty($argument)) {
 		fail('Empty parameter.');
 	}
 
-	// Need to sanitize hostname
-	if ($type == 'ping' || $type == 'trace') {
+	// Need to sanitize IPV4 hostname
+	if ($type == 'ping' || $type == 'trace' || $type == 'route') {
 		// Always returns safely with IP, even for IPs
 		$host = gethostbynamel($argument);
 		if($host) {
 			$argument = $host[0];
+		} else {
+			fail('Wrong hostname.');
+		}
+	}
+	// Need to sanitize IPV6 hostname
+	if ($type == 'ping6' || $type == 'trace6') {
+		// Always returns safely with IP, even for IPs
+		//$host = gethostbynamel($argument);
+		$host = dns_get_record($argument,DNS_AAAA);
+		if($host) {
+			$argument = $host[0][ipv6];
 		} else {
 			fail('Wrong hostname.');
 		}

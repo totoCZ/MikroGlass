@@ -79,14 +79,16 @@
 			<div class="input-group">
 				<div class="input-group-btn">
 					<button id="button" class="btn btn-lg btn-danger" tabindex="-1">
-						<span id="btnText">Ping</span>
+						<span id="btnText">Ping IPV4</span>
 					</button>
 					<button type="button" class="btn btn-lg btn-danger dropdown-toggle" data-toggle="dropdown" tabindex="-1">
 						<span class="caret"></span>
 					</button>
 					<ul class="dropdown-menu">
-						<li><a href="javascript:switchAction('ping')">Ping</a></li>
-						<li><a href="javascript:switchAction('trace')">Traceroute</a></li>
+						<li><a href="javascript:switchAction('ping')">Ping IPV4</a></li>
+						<li><a href="javascript:switchAction('trace')">Traceroute IPV4</a></li>
+						<li><a href="javascript:switchAction('ping6')">Ping IPV6</a></li>
+						<li><a href="javascript:switchAction('trace6')">Traceroute IPV6</a></li>
 						<li><a href="javascript:switchAction('route')">BGP Route</a></li>
 					</ul>
 				</div>

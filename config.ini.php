@@ -14,13 +14,13 @@ logo="//placehold.it/150x50&text=Demo+server"
 customText="<h3><a href='//github.com/TomHetmer/MikroGlass/releases'>Download</a></h3>"
 
 [login]
-user=admin
+user=mguser270114
 
 ; only for putty link
 ; leave empty for ssh on linux
 password=
 
 [servers]
-fqdn[0]=78.156.159.65
+fqdn[0]=193.187.80.16
 fqdn[1]=demo.mt.lv
 fqdn[2]=demo2.mt.lv
