@@ -18,6 +18,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 header('Content-Type: application/json');
 
+function valid_ipv6_address( $ipv6 )
+{
+    $regex = '/^(((?=(?>.*?(::))(?!.+\3)))\3?|([\dA-F]{1,4}(\3|:(?!$)|$)|\2))(?4){5}((?4){2}|(25[0-5]|(2[0-4]|1\d|[1-9])?\d)(\.(?7)){3})\z/i';
+        if(!preg_match($regex, $ipv6))
+        return (false); // is not a valid IPv6 Address
+
+    return (true);
+}
+
 function fail($why) {
 	echo json_encode(array(
 		'error' => $why
@@ -30,10 +39,10 @@ $user 		= $config['user'];
 $password	= $config['password'];
 
 $tools = array(
-	'ping'          => '/ping count=4',
-	'trace'         => '/tool traceroute use-dns=yes duration=2',
+	'ping'          => '/ping count=5',
+	'trace'         => '/tool traceroute use-dns=yes duration=3',
 	'ping6'          => '/ping count=5',
-	'trace6'         => '/tool traceroute use-dns=yes',
+	'trace6'         => '/tool traceroute use-dns=yes duration=3',
 	'route'         => '/ip r pr de where bgp %s in dst-address',
 	'ipv4-route-info'    => '/ip route print',
 	'ipv6-route-info'    => '/ipv6 route print',
@@ -80,14 +89,22 @@ if ($type == 'ping' || $type == 'trace' || $type == 'ping6' || $type == 'trace6'
 		}
 	}
 	// Need to sanitize IPV6 hostname
+	// check that the argument - is the ipv6
+	// if realy ipv6 - ok we are go further
+	// if not ip - maybe it's hostname?
+	// get dns AAAA record	
 	if ($type == 'ping6' || $type == 'trace6') {
 		// Always returns safely with IP, even for IPs
 		//$host = gethostbynamel($argument);
-		$host = dns_get_record($argument,DNS_AAAA);
-		if($host) {
-			$argument = $host[0][ipv6];
+		if (valid_ipv6_address( $argument )){
+			$argument = $argument;
 		} else {
-			fail('Wrong IPV6 hostname.');
+			$host = dns_get_record($argument,DNS_AAAA);
+			if($host) {
+				$argument = $host[0][ipv6];
+			} else {
+				fail('Wrong IPV6 hostname.');
+			}
 		}
 	}
 
