@@ -31,7 +31,7 @@ $password	= $config['password'];
 
 $tools = array(
 	'ping'          => '/ping count=4',
-	'trace'         => '/tool traceroute use-dns=yes',
+	'trace'         => '/tool traceroute use-dns=yes duration=2',
 	'ping6'          => '/ping count=5',
 	'trace6'         => '/tool traceroute use-dns=yes',
 	'route'         => '/ip r pr de where bgp %s in dst-address',
@@ -64,12 +64,19 @@ if ($type == 'ping' || $type == 'trace' || $type == 'ping6' || $type == 'trace6'
 
 	// Need to sanitize IPV4 hostname
 	if ($type == 'ping' || $type == 'trace' || $type == 'route') {
-		// Always returns safely with IP, even for IPs
-		$host = gethostbynamel($argument);
-		if($host) {
-			$argument = $host[0];
+		// check that the argument - is the ip
+		// if realy ip - ok we are go further
+		// if not ip - maybe it's hostname?
+		// get dns A record
+		if(ip2long($argument)){
+			$argument = $argument;
 		} else {
-			fail('Wrong hostname.');
+			$host = dns_get_record($argument,DNS_A);
+			if($host) {
+				$argument = $host[0][ip];
+			} else {
+				fail('Wrong IPV4 hostname.');
+			}
 		}
 	}
 	// Need to sanitize IPV6 hostname
@@ -80,7 +87,7 @@ if ($type == 'ping' || $type == 'trace' || $type == 'ping6' || $type == 'trace6'
 		if($host) {
 			$argument = $host[0][ipv6];
 		} else {
-			fail('Wrong hostname.');
+			fail('Wrong IPV6 hostname.');
 		}
 	}
 
