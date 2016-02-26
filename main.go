@@ -52,8 +52,6 @@ func send(routerName string, command string) (routeros.Reply, error) {
 		return routeros.Reply{}, err
 	}
 
-	log.Print(ros)
-
 	err = ros.Connect("admin", "")
 	if err != nil {
 		log.Print(err)
@@ -61,8 +59,6 @@ func send(routerName string, command string) (routeros.Reply, error) {
 	}
 
 	res, err := ros.Call(command, nil)
-
-	log.Print(res)
 
 	ros.Close()
 
@@ -95,8 +91,6 @@ func commandHandler(c web.C, w http.ResponseWriter, r *http.Request) {
 		log.Print(err)
 		fmt.Fprint(w, jsonError(err.Error()))
 	}
-
-	log.Print(res)
 }
 
 
@@ -130,15 +124,13 @@ func handleInfo(c web.C, w http.ResponseWriter, r *http.Request) {
 		fmt.Fprint(w, jsonError(err.Error()))
 	}
 
-	log.Print(res)
+	log.FPrint(w, res)
 
 }
 
 func main() {
 
 	config := ReadConfig()
-
-	log.Print(config)
 
 	goji.Get("/:router/:command/:host", commandHandler)
 	goji.Get("/:router/info", handleInfo)
