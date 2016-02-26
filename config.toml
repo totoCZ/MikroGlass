@@ -1,11 +1,13 @@
 [routers]
 
   [routers.demo]
-  ip = "demo.mt.lv"
+  hostname = "demo.mt.lv"
+  port = 8728
   username = "admin"
   password = ""
 
   [routers.demo2]
-  ip = "demo2.mt.lv"
+  hostname = "demo2.mt.lv"
+  port = 8728
   username = "admin"
   password = ""
