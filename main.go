@@ -1,18 +1,19 @@
 package main
 
 import (
-"os"
-"fmt"
-"log"
+	"os"
+	"fmt"
+	"log"
+	"errors"
 
-"net/http"
-"encoding/json"
+	"net/http"
+	"encoding/json"
 
-"gopkg.in/BurntSushi/toml.v0"
-"gopkg.in/Netwurx/routeros-api-go.v0"
-"github.com/zenazn/goji"
-"github.com/zenazn/goji/web"
-valid "github.com/asaskevich/govalidator"
+	"gopkg.in/BurntSushi/toml.v0"
+	"gopkg.in/Netwurx/routeros-api-go.v0"
+	"github.com/zenazn/goji"
+	"github.com/zenazn/goji/web"
+	valid "github.com/asaskevich/govalidator"
 )
 
 type tomlConfig struct {
@@ -72,27 +73,20 @@ func jsonError(text string) string {
 	return string(res)
 }
 
-func handlePing(c web.C, w http.ResponseWriter, r *http.Request) {
+func commandHandler(c web.C, w http.ResponseWriter, r *http.Request) {
+	var router string = c.URLParams["router"]
+	var command string = c.URLParams["host"]
 	var param string = c.URLParams["host"]
 
-	if (!valid.IsIP(param) && !valid.IsDNSName(param)) {
-		fmt.Fprint(w, jsonError("This is not a hostname or an IP address"))
-		return
+	var err error;
+	var res routeros.Reply;
+
+	switch command {
+		case "ping":
+			res, err = cmdPing(router, param)
+		case "tracert":
+			res, err = cmdTracert(router, param)
 	}
-}
-
-
-func handleTracert(c web.C, w http.ResponseWriter, r *http.Request) {
-	var param string = c.URLParams["host"]
-
-	if (!valid.IsIP(param) && !valid.IsDNSName(param)) {
-		fmt.Fprint(w, jsonError("This is not a hostname or an IP address"))
-		return
-	}
-}
-
-func handleInfo(c web.C, w http.ResponseWriter, r *http.Request) {
-	var res, err = send("", "/system/resource/print")
 
 	if err != nil {
 		log.Print(err)
@@ -102,14 +96,48 @@ func handleInfo(c web.C, w http.ResponseWriter, r *http.Request) {
 	log.Print(res)
 }
 
+
+func cmdPing(router string, param string) (routeros.Reply, error) {
+
+	if (!valid.IsIP(param) && !valid.IsDNSName(param)) {
+		return routeros.Reply{}, errors.New("This is not a hostname or an IP address.")
+	}
+
+	res, err := send(router, fmt.Sprintf("/ping %s", param))
+	return res, err
+}
+
+func cmdTracert(router string, param string) (routeros.Reply, error) {
+
+	if (!valid.IsIP(param) && !valid.IsDNSName(param)) {
+		return routeros.Reply{}, errors.New("This is not a hostname or an IP address.")
+	}
+
+	res, err := send(router, fmt.Sprintf("/tool traceroute address=%s duration=40 count=3", param))
+	return res, err
+}
+
+func handleInfo(c web.C, w http.ResponseWriter, r *http.Request) {
+	var router string = c.URLParams["router"]
+
+	res, err := send(router, "/system/resource/print")
+
+	if err != nil {
+		log.Print(err)
+		fmt.Fprint(w, jsonError(err.Error()))
+	}
+
+	log.Print(res)
+
+}
+
 func main() {
 
 	config := ReadConfig()
 
 	log.Print(config)
 
-	goji.Get("/:router/ping/:host", handlePing)
-	goji.Get("/:router/tracert/:host", handleTracert)
+	goji.Get("/:router/:command/:host", commandHandler)
 	goji.Get("/:router/info", handleInfo)
 
 	goji.Get("/*", http.FileServer(http.Dir("web")))
