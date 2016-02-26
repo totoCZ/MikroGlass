@@ -78,8 +78,8 @@ func commandHandler(c web.C, w http.ResponseWriter, r *http.Request) {
 	var command string = c.URLParams["host"]
 	var param string = c.URLParams["host"]
 
-	var err error;
-	var res routeros.Reply;
+	var err error
+	var res routeros.Reply
 
 	switch command {
 		case "ping":
