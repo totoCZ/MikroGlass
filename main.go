@@ -21,7 +21,10 @@ type tomlConfig struct {
 }
 
 type router struct {
-	IP string
+	Hostname string
+	Port int
+	Username string
+	Password string
 }
 
 func ReadConfig() tomlConfig {
